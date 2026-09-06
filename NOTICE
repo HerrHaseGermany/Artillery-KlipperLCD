@@ -1,0 +1,88 @@
+Artillery-KlipperLCD
+Copyright 2026 HerrHaseGermany
+
+This project contains, adapts, and builds upon community work from
+several upstream projects related to Klipper touchscreen support.
+
+Upstream projects and acknowledgements
+======================================
+
+joakimtoe/KlipperLCD
+https://github.com/joakimtoe/KlipperLCD
+
+KlipperLCD was originally developed by Joakimtoe for the Elegoo
+Neptune 3 Pro touchscreen and forms the principal upstream origin
+of the KlipperLCD display-service concept and code lineage used by
+this project.
+
+KlipperLCD is distributed under the Apache License, Version 2.0.
+
+
+CiareCw455/Tortillery
+https://github.com/CiareCw455/Tortillery
+
+Tortillery adapted KlipperLCD and custom touchscreen firmware for
+the Artillery Sidewinder X4 Pro / X4 Plus family and explicitly
+credits Joakimtoe/KlipperLCD as the origin of its display support.
+
+This project incorporates and further develops concepts and
+Artillery-specific work originating from the Tortillery community.
+
+
+mechano/ArtilleryX4PlusScreenService
+https://github.com/mechano/ArtilleryX4PlusScreenService
+
+This project provided a standalone distribution of the Artillery
+X4 KlipperLCD service derived from the Tortillery firmware project
+and helped establish the standalone Artillery X4 service lineage.
+
+
+Artillery-KlipperLCD
+https://github.com/HerrHaseGermany/Artillery-KlipperLCD
+
+This repository further adapts and extends the above work.
+
+Major additions and modifications include:
+
+- Standalone repository layout
+- Integrated Artillery touchscreen service
+- Bundled TFT firmware
+- Automated TJC/Nextion-compatible firmware flashing
+- SHA-256 based TFT firmware version tracking
+- Automatic first-install TFT deployment
+- Moonraker and Mainsail Update Manager integration
+- systemd service integration
+- Reproducible installer for compatible BTT Manta M5P / CB2 systems
+- Additional maintenance, UI, protocol, and integration work
+
+Licensing
+=========
+
+The KlipperLCD-derived portions of this project remain subject to
+the Apache License, Version 2.0.
+
+See the LICENSE file included with this repository.
+
+Original copyrights and attribution notices remain the property of
+their respective authors and contributors.
+
+The Tortillery project as a whole uses GPL-3.0 because it combines
+multiple separately licensed components. This repository is not a
+redistribution or relicensing of the complete Tortillery firmware;
+it focuses on the KlipperLCD / display-service lineage and related
+Artillery touchscreen adaptations.
+
+The bundled TFT firmware and Artillery-specific components may
+contain community-derived work from the projects acknowledged above.
+Any additional upstream attribution or licensing information that
+becomes known should be retained and added to this NOTICE.
+
+Trademarks
+==========
+
+Artillery, BIGTREETECH, Klipper, Moonraker, Mainsail, Elegoo,
+Nextion, and TJC names and trademarks belong to their respective
+owners.
+
+This is an independent community project and is not affiliated with
+or endorsed by those projects or manufacturers.
