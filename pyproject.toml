@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "artillery-screen"
+version = "0.1.0"
+description = "UART screen service for Artillery X4 printers running Klipper"
+requires-python = ">=3.9"
+dependencies = [
+  "pyserial>=3.5",
+  "requests>=2.25",
+]
+
+[project.scripts]
+artillery-screen = "artillery_screen.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

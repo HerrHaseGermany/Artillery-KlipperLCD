@@ -1,0 +1,12 @@
+[Unit]
+Description=Mount Artillery LCD USB medium %I
+BindsTo=dev-%i.device
+After=dev-%i.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/bin/mkdir -p /media/artillery/%I
+ExecStart=/bin/mount -o rw,nosuid,nodev,noexec /dev/%I /media/artillery/%I
+ExecStop=-/bin/umount /media/artillery/%I
+ExecStopPost=-/bin/rmdir /media/artillery/%I

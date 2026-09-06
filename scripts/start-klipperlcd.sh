@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-
 set -u
 
-ROOT="/home/biqu/KlipperLCD"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+USER_HOME="$(getent passwd "$(id -un)" | cut -d: -f6)"
+
 FIRMWARE="$ROOT/firmware/ArtilleryX4KlipperScreen.tft"
 
-STATE_DIR="/home/biqu/.local/state/Artillery-KlipperLCD"
+STATE_DIR="$USER_HOME/.local/state/Artillery-KlipperLCD"
 HASH_FILE="$STATE_DIR/tft.sha256"
 FAILED_FILE="$STATE_DIR/tft.failed.sha256"
 
-UPLOADER="/home/biqu/.local/bin/nextion-fw-upload"
+UPLOADER="$USER_HOME/.local/bin/nextion-fw-upload"
 PORT="/dev/ttyS2"
 
 mkdir -p "$STATE_DIR"
@@ -17,7 +18,6 @@ mkdir -p "$STATE_DIR"
 echo "=== Artillery KlipperLCD ==="
 
 if [ -f "$FIRMWARE" ]; then
-
     NEW_HASH="$(sha256sum "$FIRMWARE" | awk '{print $1}')"
     OLD_HASH="$(cat "$HASH_FILE" 2>/dev/null || true)"
     FAILED_HASH="$(cat "$FAILED_FILE" 2>/dev/null || true)"
@@ -34,8 +34,7 @@ if [ -f "$FIRMWARE" ]; then
 
         else
             echo "New TFT firmware detected."
-            echo "Flashing:"
-            echo "$FIRMWARE"
+            echo "Flashing: $FIRMWARE"
 
             if "$UPLOADER" \
                 -b 115200 \
@@ -46,20 +45,16 @@ if [ -f "$FIRMWARE" ]; then
             then
                 echo "$NEW_HASH" > "$HASH_FILE"
                 rm -f "$FAILED_FILE"
-
                 echo "TFT firmware update successful."
             else
                 echo "$NEW_HASH" > "$FAILED_FILE"
-
                 echo "WARNING: TFT firmware update failed."
                 echo "KlipperLCD will still be started."
             fi
         fi
-
     else
         echo "TFT firmware already up to date."
     fi
-
 else
     echo "No TFT firmware found."
 fi

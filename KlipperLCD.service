@@ -8,7 +8,7 @@ User=biqu
 SupplementaryGroups=dialout
 WorkingDirectory=/home/biqu/KlipperLCD
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/usr/bin/python3 /home/biqu/KlipperLCD/main.py
+ExecStart=/home/biqu/KlipperLCD/scripts/start-klipperlcd.sh
 Restart=always
 RestartSec=2
 
