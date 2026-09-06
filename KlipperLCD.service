@@ -1,0 +1,16 @@
+[Unit]
+Description=KlipperLCD Service
+After=klipper.service moonraker.service
+
+[Service]
+Type=simple
+User=biqu
+SupplementaryGroups=dialout
+WorkingDirectory=/home/biqu/KlipperLCD
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /home/biqu/KlipperLCD/main.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
